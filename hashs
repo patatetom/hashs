@@ -5,7 +5,7 @@
 while [ "${file}" ]
 do
         echo ${file}
-        if [ ${file} != /dev/stdin ]
+        if [ "${file}" != /dev/stdin ]
         then
                 [ -L "${file}" ] && echo -n "cible  : " && readlink -e "${file}"
                 stat -Lc "size   : %s" "${file}"
