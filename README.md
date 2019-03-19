@@ -21,3 +21,39 @@ $ sudo mv ./hashs /usr/local/bin/
 
 
 ## usage
+
+`hashs` can process one or more files :
+
+```shell
+$ hashs /tmp/zfs.disk 
+/tmp/zfs.disk
+size   : 3276800
+M date : 2019-03-19 09:29:52
+A date : 2019-03-19 10:13:21
+C date : 2019-03-19 09:29:52
+xxh64  : fa22b5e113963903
+md5    : 708d4dc6e7096d01adaa0e79ca9d727b
+sha1   : 8fcad952fea87e0f99557cccad919ceb00dcc5e8
+sha256 : d8e039fa55e7d087d31dfccf2c227dec0537ab753841d50121c78145fc89525d
+
+$ hashs /tmp/z*.disk
+/tmp/zfs.disk
+size   : 3276800
+M date : 2019-03-19 09:29:52
+A date : 2019-03-19 10:15:47
+C date : 2019-03-19 09:29:52
+xxh64  : fa22b5e113963903
+md5    : 708d4dc6e7096d01adaa0e79ca9d727b
+sha1   : 8fcad952fea87e0f99557cccad919ceb00dcc5e8
+sha256 : d8e039fa55e7d087d31dfccf2c227dec0537ab753841d50121c78145fc89525d
+
+/tmp/zol.disk
+size   : 3276800
+M date : 2019-03-19 10:17:01
+A date : 2019-03-19 10:17:01
+C date : 2019-03-19 10:17:01
+xxh64  : 267e255eac404a83
+md5    : 4aee71421bcecd550191cf3ecdf0fc33
+sha1   : fda88b21a38bef77266f4ee027d5989078105ce2
+sha256 : bbcaade415a47515be4a1742b53bfd7b66174f0384022d8f398e52e9c82773c1
+```
