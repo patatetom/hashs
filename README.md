@@ -78,3 +78,12 @@ md5    : 708d4dc6e7096d01adaa0e79ca9d727b
 sha1   : 8fcad952fea87e0f99557cccad919ceb00dcc5e8
 sha256 : d8e039fa55e7d087d31dfccf2c227dec0537ab753841d50121c78145fc89525d
 ```
+```shell
+# pv /dev/sda1 | hashs
+499MiO 0:00:03 [ 124MiB/s] [================================>] 100%            
+/dev/stdin
+xxh64  : a511b74c40a55a76
+md5    : 3ff5cae5ad36ac8e9371f9836b403587
+sha1   : e06accc824ed2073c71a2f7a55155dca189d5910
+sha256 : a76ccc02aa4cc836abc07a606835817fb28b8a535655fca12ab226571db29fb2
+```
