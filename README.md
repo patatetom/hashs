@@ -57,3 +57,21 @@ md5    : 4aee71421bcecd550191cf3ecdf0fc33
 sha1   : fda88b21a38bef77266f4ee027d5989078105ce2
 sha256 : bbcaade415a47515be4a1742b53bfd7b66174f0384022d8f398e52e9c82773c1
 ```
+
+and read from standard input :
+
+```shell
+$ hashs < /tmp/zfs.disk 
+/dev/stdin
+xxh64  : fa22b5e113963903
+md5    : 708d4dc6e7096d01adaa0e79ca9d727b
+sha1   : 8fcad952fea87e0f99557cccad919ceb00dcc5e8
+sha256 : d8e039fa55e7d087d31dfccf2c227dec0537ab753841d50121c78145fc89525d
+
+$ cat splited.* | hashs
+/dev/stdin
+xxh64  : fa22b5e113963903
+md5    : 708d4dc6e7096d01adaa0e79ca9d727b
+sha1   : 8fcad952fea87e0f99557cccad919ceb00dcc5e8
+sha256 : d8e039fa55e7d087d31dfccf2c227dec0537ab753841d50121c78145fc89525d
+```
