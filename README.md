@@ -1,4 +1,5 @@
 # hashs
+
 allows to calculate several hash functions simultaneously 
 
 
@@ -18,6 +19,8 @@ $ mv ./hashs /home/user/.local/bin
 $ # for system use
 $ sudo mv ./hashs /usr/local/bin/
 ```
+
+`hashs` uses [xxHash](https://github.com/Cyan4973/xxHash) non-cryptographic hash function : you can install it if you want to use it or delete the corresponding line of te script if you don't want to use it.
 
 
 ## usage
