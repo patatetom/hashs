@@ -7,7 +7,7 @@ do
         echo ${file}
         if [ "${file}" != /dev/stdin ]
         then
-                [ -L "${file}" ] && echo -n "cible  : " && readlink -e "${file}"
+                [ -L "${file}" ] && echo -n "link   : " && readlink -e "${file}"
                 stat -Lc "size   : %s" "${file}"
                 stat -Lc "M date : %y" "${file}" | sed 's/\..*//'
                 stat -Lc "A date : %x" "${file}" | sed 's/\..*//'
