@@ -5,11 +5,14 @@
 while [ "${file}" ]
 do
         echo ${file}
-        [ -L "${file}" ] && echo -n "cible  : " && readlink -e "${file}"
-        stat -Lc "size   : %s" "${file}"
-        stat -Lc "M date : %y" "${file}" | sed 's/\..*//'
-        stat -Lc "A date : %x" "${file}" | sed 's/\..*//'
-        stat -Lc "C date : %z" "${file}" | sed 's/\..*//'
+        if [ ${file} != /dev/stdin ]
+        then
+                [ -L "${file}" ] && echo -n "cible  : " && readlink -e "${file}"
+                stat -Lc "size   : %s" "${file}"
+                stat -Lc "M date : %y" "${file}" | sed 's/\..*//'
+                stat -Lc "A date : %x" "${file}" | sed 's/\..*//'
+                stat -Lc "C date : %z" "${file}" | sed 's/\..*//'
+        fi
         {
                 tee < "${file}"                                        \
                     >( echo '1:xxh64  : '$(xxh64sum 2>/dev/null) >&3 ) \
