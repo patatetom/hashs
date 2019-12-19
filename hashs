@@ -14,11 +14,12 @@ do
                 stat -Lc "C date : %z" "${file}" | sed 's/\..*//'
         fi
         {
+            trap "" pipe
                 tee < "${file}"                                        \
                     >( echo '1:xxh64  : '$(xxh64sum 2>/dev/null) >&3 ) \
                     >( echo '2:md5    : '$(md5sum) >&3 )               \
                     >( echo '3:sha1   : '$(sha1sum) >&3 )              \
-                    >( echo '4:sha256 : '$(sha256sum) >&3 ) >/dev/null
+                    > >( echo '4:sha256 : '$(sha256sum))
         } 3>&1 | sort | sed -e 's/^.://g' -e 's/ -$//g'
         shift
         file=${1}
