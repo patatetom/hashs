@@ -20,7 +20,7 @@ do
                     >( echo '2:md5    : '$(md5sum) >&3 )               \
                     >( echo '3:sha1   : '$(sha1sum) >&3 )              \
                     > >( echo '4:sha256 : '$(sha256sum))
-        } 3>&1 | sort | sed -e 's/^.://g' -e 's/ -$//g'
+        } 3>&1 | sort | sed -e 's/^.://g' -e 's/ \(-\|stdin\)$//g'
         shift
         file=${1}
         [ "${file}" ] && echo
