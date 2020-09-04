@@ -8,13 +8,19 @@ do
         if [ "${file}" != /dev/stdin ]
         then
                 [ -L "${file}" ] && echo -n "link   : " && readlink -e "${file}"
-                stat -Lc "size   : %s" "${file}"
-                stat -Lc "M date : %y" "${file}" | sed 's/\..*//'
-                stat -Lc "A date : %x" "${file}" | sed 's/\..*//'
-                stat -Lc "C date : %z" "${file}" | sed 's/\..*//'
+                if [ -f "${file}" ]
+                then
+                        stat -Lc "size   : %s" "${file}"
+                        stat -Lc "M date : %y" "${file}" | sed 's/\..*//'
+                        stat -Lc "A date : %x" "${file}" | sed 's/\..*//'
+                        stat -Lc "C date : %z" "${file}" | sed 's/\..*//'
+                elif [ -b "${file}" ]
+                then
+                        echo "size   : "$( blockdev --getsize64 "${file}" )
+                fi
         fi
         {
-            trap "" pipe
+                trap "" pipe
                 tee < "${file}"                                        \
                     >( echo '1:xxh64  : '$(xxh64sum 2>/dev/null) >&3 ) \
                     >( echo '2:md5    : '$(md5sum) >&3 )               \
